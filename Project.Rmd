@@ -2,7 +2,7 @@
 title: "Starbucks in Arizona"
 subtitle: "Data Products Week 2"
 author: "Gary R Seamans"
-date: "January 7, 2018"
+date: "January 7, 2019"
 output:
   prettydoc::html_pretty:
     fig_caption: yes
