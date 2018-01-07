@@ -1,0 +1,33 @@
+---
+title: "Starbucks in Arizona"
+subtitle: "Data Products Week 2"
+author: "Gary R Seamans"
+date: "January 7, 2018"
+output:
+  prettydoc::html_pretty:
+    fig_caption: yes
+    highlight: github
+    theme: cayman
+  html_document: default
+  word_document: default
+  pdf_document:
+    fig_caption: yes
+    latex_engine: xelatex
+keep_md: yes
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=TRUE, echo=FALSE, message=FALSE}
+library(prettydoc)
+library(leaflet)
+set.seed(500)
+```  
+
+```{r ReadStarbucks, echo = FALSE, message = FALSE}
+coffeeIcon <- makeIcon(iconUrl = "data/Coffee.png",
+    iconWidth = 31, iconHeight = 31,
+    iconAnchorX = 31, iconAnchorY = 16)
+starbucksDF <- read.csv(file = "data/ArizonaStarbucks.csv", header = TRUE, sep = ",")
+starbucksDF %>% leaflet() %>% addTiles() %>% addMarkers(icon = coffeeIcon, clusterOptions = markerClusterOptions(), popup = starbucksDF[,4])
+```
